@@ -11,12 +11,16 @@ import java.util.List;
 public class ArticleService {
     private final ArticleRepo articleRepo;
 
-@Autowired
+    @Autowired
     public ArticleService(ArticleRepo articleRepo) {
         this.articleRepo = articleRepo;
     }
 
-    public List<Article> findAllArticles(){
+    public List<Article> findAllArticles() {
         return articleRepo.findAll();
+    }
+
+    public Article saveArticle(Article article) {
+        return articleRepo.save(article);
     }
 }
