@@ -38,9 +38,6 @@ public class Article {
     @Column(name = "prix_achat", precision = 10, scale = 2)
     private BigDecimal prixAchat;
 
-    @Column(name = "id_fournisseur")
-    private Integer idFournisseur;
-
     @CreationTimestamp
     @Column(name = "date_creation", updatable = false)
     private LocalDateTime dateCreation;
@@ -70,15 +67,22 @@ public class Article {
     @Column(name = "annee_vin")
     private Integer anneeVin;
 
-    @Column(name = "id_categorie")
-    private Integer idCategorie;
-
-    @Column(name = "id_souscategorie")
-    private Integer idSouscategorie;
-
-    @Column(name = "id_maison")
-    private Integer idMaison;
-
     @Column(name = "tendance")
     private Boolean tendance;
+
+    @ManyToOne
+    @JoinColumn(name = "id_fournisseur", referencedColumnName = "id")
+    private Fournisseur fournisseur;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categorie", referencedColumnName = "id")
+    private Categorie categorie;
+
+    @ManyToOne
+    @JoinColumn(name = "id_souscategorie", referencedColumnName = "id")
+    private SousCategorie sousCategorie;
+
+    @ManyToOne
+    @JoinColumn(name = "id_maison", referencedColumnName = "id")
+    private Maison maison;
 }
