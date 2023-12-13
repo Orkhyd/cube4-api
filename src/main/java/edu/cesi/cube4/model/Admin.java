@@ -22,7 +22,7 @@ public class Admin {
     private String nomUtilisateur;
 
     @NotBlank
-    @Column(name = "mot_de_passe", length = 50)
+    @Column(name = "mot_de_passe", length = 512)
     private String motDePasse;
 
     @CreationTimestamp
