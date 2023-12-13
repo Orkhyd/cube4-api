@@ -10,24 +10,24 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "souscategories")
+@Table(name = "subcategories")
 public class SousCategorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotBlank
-    @Column(name = "nom", length = 255)
-    private String nom;
+    @Column(length = 255)
+    private String name;
 
     @CreationTimestamp
-    @Column(name = "date_creation")
+    @Column()
     private LocalDateTime dateCreation;
 
     @UpdateTimestamp
-    @Column(name = "date_modification")
+    @Column()
     private LocalDateTime dateModification;
 
-    @Column(name = "supprime")
-    private Boolean supprime;
+    @Column()
+    private Boolean delete;
 }

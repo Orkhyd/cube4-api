@@ -1,6 +1,5 @@
 package edu.cesi.cube4.controller;
 
-import edu.cesi.cube4.model.Article;
 import edu.cesi.cube4.model.Maison;
 import edu.cesi.cube4.service.MaisonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/maisons")
+@RequestMapping("/houses")
 public class MaisonController {
 
     private final MaisonService maisonService;
