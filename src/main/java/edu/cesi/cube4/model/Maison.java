@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "maisons")
+@Table(name = "houses")
 public class Maison {
 
     @Id
@@ -18,17 +18,17 @@ public class Maison {
     private Integer id;
 
     @NotBlank
-    @Column(name = "nom", length = 255)
-    private String nom;
+    @Column(length = 255)
+    private String name;
 
     @CreationTimestamp
-    @Column(name = "date_creation")
-    private LocalDateTime dateCreation;
+    @Column()
+    private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column(name = "date_modification")
-    private LocalDateTime dateModification;
+    @Column()
+    private LocalDateTime modificationDate;
 
-    @Column(name = "supprime")
-    private Boolean supprime;
+    @Column()
+    private Boolean delete;
 }

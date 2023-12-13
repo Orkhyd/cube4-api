@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.type.descriptor.jdbc.TinyIntJdbcType;
 
 import java.time.LocalDateTime;
 
@@ -19,19 +18,19 @@ public class Categorie {
     private Integer id;
 
     @NotBlank
-    @Column(name = "nom", length = 50)
-    private String nom;
+    @Column(length = 50)
+    private String name;
 
     @CreationTimestamp
-    @Column(name = "date_creation")
-    private LocalDateTime dateCreation;
+    @Column()
+    private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column(name = "date_modification")
-    private LocalDateTime dateModification;
+    @Column()
+    private LocalDateTime modificationDate;
 
-    @Column(name = "supprime")
-    private Boolean supprime = false;
+    @Column()
+    private Boolean delete = false;
 
 
 }

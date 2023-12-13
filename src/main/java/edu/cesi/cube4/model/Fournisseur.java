@@ -9,7 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Data
-@Table(name = "fournisseurs")
+@Table(name = "suppliers")
 @Entity
 public class Fournisseur {
 
@@ -17,29 +17,29 @@ public class Fournisseur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "nom_entreprise", length = 100)
-    private String nomEntreprise;
+    @Column(length = 100)
+    private String nameEntreprise;
 
     @NotBlank
-    @Column(name = "nom", length = 30)
-    private String nom;
+    @Column(length = 30)
+    private String name;
 
     @NotBlank
-    @Column(name = "courriel", length = 100)
-    private String courriel;
+    @Column(length = 100)
+    private String mail;
 
 
-    @Column(name = "numero_telephone", length = 20)
-    private String numeroTelephone;
+    @Column(length = 20)
+    private String phone;
 
     @CreationTimestamp
-    @Column(name = "date_creation")
-    private LocalDateTime dateCreation;
+    @Column()
+    private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column(name = "date_modification")
-    private LocalDateTime dateModification;
+    @Column()
+    private LocalDateTime modificationDate;
 
-    @Column(name = "supprime")
-    private Boolean supprime;
+    @Column()
+    private Boolean delete;
 }

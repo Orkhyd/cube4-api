@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "articles")
+@Table(name = "items")
 @Data
 public class Article {
 
@@ -21,68 +21,68 @@ public class Article {
     private Integer id;
 
     @NotBlank
-    @Column(name = "nom", length = 50)
-    private String nom;
+    @Column(length = 50)
+    private String name;
 
     @NotBlank
-    @Column(name = "description", columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Min(0)
     @NotNull
-    @Column(name = "prix_vente", precision = 10, scale = 2)
-    private BigDecimal prixVente;
+    @Column(precision = 10, scale = 2)
+    private BigDecimal sellPrice;
 
     @Min(0)
     @NotNull
-    @Column(name = "prix_achat", precision = 10, scale = 2)
-    private BigDecimal prixAchat;
+    @Column(precision = 10, scale = 2)
+    private BigDecimal buyPrice;
 
     @CreationTimestamp
-    @Column(name = "date_creation", updatable = false)
-    private LocalDateTime dateCreation;
+    @Column(updatable = false)
+    private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column(name = "date_modification")
-    private LocalDateTime dateModification;
+    @Column()
+    private LocalDateTime modificationDate;
 
 
-    @Column(name = "supprime")
-    private Boolean supprime = false;
+    @Column()
+    private Boolean delete = false;
 
     @Min(0)
-    @Column(name = "quantite_enregistree")
-    private Integer quantiteEnregistree;
+    @Column()
+    private Integer saveQuantity;
 
-    @Column(name = "commande_auto")
-    private Boolean commandeAuto;
+    @Column()
+    private Boolean autoOrder;
 
-    @Column(name = "seuil_stock_min")
-    private Integer seuilStockMin;
+    @Column()
+    private Integer minOrderThreshold;
 
-    @Column(name = "prix_carton", precision = 7, scale = 2)
-    private BigDecimal prixCarton;
+    @Column(precision = 7, scale = 2)
+    private BigDecimal cartonPrice;
 
     @NotNull
-    @Column(name = "annee_vin")
-    private Integer anneeVin;
+    @Column()
+    private Integer wineYear;
 
-    @Column(name = "tendance")
+    @Column()
     private Boolean tendance;
 
     @ManyToOne
-    @JoinColumn(name = "id_fournisseur", referencedColumnName = "id")
-    private Fournisseur fournisseur;
+    @JoinColumn(name = "id_supplier", referencedColumnName = "id")
+    private Fournisseur supplier;
 
     @ManyToOne
     @JoinColumn(name = "id_categorie", referencedColumnName = "id")
     private Categorie categorie;
 
     @ManyToOne
-    @JoinColumn(name = "id_souscategorie", referencedColumnName = "id")
-    private SousCategorie sousCategorie;
+    @JoinColumn(name = "id_subcategorie", referencedColumnName = "id")
+    private SousCategorie subCategorie;
 
     @ManyToOne
-    @JoinColumn(name = "id_maison", referencedColumnName = "id")
-    private Maison maison;
+    @JoinColumn(name = "id_house", referencedColumnName = "id")
+    private Maison house;
 }

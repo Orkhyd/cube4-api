@@ -4,14 +4,13 @@ import edu.cesi.cube4.model.Article;
 import edu.cesi.cube4.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/articles")
+@RequestMapping("/items")
 public class ArticleController {
     private final ArticleService articleService;
 
