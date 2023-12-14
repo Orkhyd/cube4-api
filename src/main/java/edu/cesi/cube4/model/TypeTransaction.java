@@ -12,6 +12,6 @@ public class TypeTransaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "description", length = 30)
+    @Column(length = 30)
     private String description;
 }

@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "suivistock")
+@Table(name = "stocktracking")
 public class SuiviStock {
 
     @Id
@@ -15,27 +15,27 @@ public class SuiviStock {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_article", referencedColumnName = "id")
-    private Article article;
+    @JoinColumn(name = "id_item", referencedColumnName = "id")
+    private Article item;
 
-    @Column(name = "quantite_avant_transaction")
-    private Integer quantiteAvantTransaction;
+    @Column()
+    private Integer quantityBeforeTransaction;
 
-    @Column(name = "quantite_transaction")
-    private Integer quantiteTransaction;
+    @Column()
+    private Integer quantityTransaction;
 
-    @Column(name = "quantite_apres_transaction")
-    private Integer quantiteApresTransaction;
+    @Column()
+    private Integer quantityAfterTransaction;
 
     @ManyToOne
     @JoinColumn(name = "id_type_transaction", referencedColumnName = "id")
-    private TypeTransaction typeTransaction;
+    private TypeTransaction idTypeTransaction;
 
-    @Column(name = "date_heure_transaction")
-    private LocalDateTime dateHeureTransaction;
+    @Column()
+    private LocalDateTime dateTransaction;
 
     @Lob
-    @Column(name = "note")
+    @Column()
     private String note;
 
 }
