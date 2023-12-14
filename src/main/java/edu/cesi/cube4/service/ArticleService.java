@@ -1,6 +1,6 @@
 package edu.cesi.cube4.service;
 
-import edu.cesi.cube4.model.Article;
+import edu.cesi.cube4.model.Item;
 import edu.cesi.cube4.repository.ArticleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +16,11 @@ public class ArticleService {
         this.articleRepo = articleRepo;
     }
 
-    public List<Article> findAllArticles() {
+    public List<Item> findAllArticles() {
         return articleRepo.findAll();
     }
 
-    public Article saveArticle(Article article) {
-        return articleRepo.save(article);
+    public Item saveArticle(Item item) {
+        return articleRepo.save(item);
     }
 }

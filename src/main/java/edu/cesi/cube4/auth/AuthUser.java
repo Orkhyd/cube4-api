@@ -22,12 +22,12 @@ public class AuthUser extends Admin implements UserDetails {
 
     @Override
     public String getPassword() {
-        return admin.getMotDePasse();
+        return admin.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return admin.getNomUtilisateur();
+        return admin.getUsername();
     }
 
     @Override

@@ -10,30 +10,29 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "utilisateursclients")
-public class Client {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @NotBlank
-    @Column(name = "nom_utilisateur", length = 50)
-    private String nomUtilisateur;
+    @Column(length = 50)
+    private String username;
 
     @NotBlank
-    @Column(name = "courriel", length = 100)
-    private String courriel;
+    @Column(length = 100)
+    private String email;
 
     @NotBlank
-    @Column(name = "mot_de_passe", length = 50)
-    private String motDePasse;
+    @Column(length = 50)
+    private String password;
 
     @CreationTimestamp
-    @Column(name = "date_creation")
-    private LocalDateTime dateCreation;
+    private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column(name = "date_modification")
-    private LocalDateTime dateModification;
+    private LocalDateTime updateDate;
+
+    private Boolean isDeleted = false;
 }

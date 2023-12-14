@@ -23,8 +23,8 @@ public class Cube4Application {
 		return args -> {
 
 			Admin user = new Admin();
-			user.setNomUtilisateur("exampleuser");
-			user.setMotDePasse(passwordEncoder.encode("examplepassword"));
+			user.setUsername("exampleuser");
+			user.setPassword(passwordEncoder.encode("examplepassword"));
 
 			// Save the user to the database
 			userRepository.save(user);
