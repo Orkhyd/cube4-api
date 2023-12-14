@@ -1,36 +1,27 @@
 package edu.cesi.cube4.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-public class Admin {
+@Entity
+public class GlobalInventory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
-    @Column(length = 50)
-    private String username;
+    private Integer totalSavedItems;
 
-    @NotBlank
-    @Column(length = 512)
-    private String password;
+    private Integer totalRealItems;
 
     @CreationTimestamp
     private LocalDateTime creationDate;
 
     @UpdateTimestamp
     private LocalDateTime updateDate;
-
-    private LocalDateTime deletionDate;
-
-    private Boolean isDeleted = false;
 }

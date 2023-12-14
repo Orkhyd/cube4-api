@@ -10,8 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "subcategories")
-public class SousCategorie {
+public class SubCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -21,13 +20,10 @@ public class SousCategorie {
     private String name;
 
     @CreationTimestamp
-    @Column()
-    private LocalDateTime dateCreation;
+    private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column()
-    private LocalDateTime dateModification;
+    private LocalDateTime updateDate;
 
-    @Column()
-    private Boolean delete;
+    private Boolean isDeleted;
 }

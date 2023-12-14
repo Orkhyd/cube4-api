@@ -9,37 +9,22 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Data
-@Table(name = "suppliers")
 @Entity
-public class Fournisseur {
+public class House {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 100)
-    private String nameEntreprise;
-
     @NotBlank
-    @Column(length = 30)
+    @Column(length = 255)
     private String name;
 
-    @NotBlank
-    @Column(length = 100)
-    private String mail;
-
-
-    @Column(length = 20)
-    private String phone;
-
     @CreationTimestamp
-    @Column()
     private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column()
-    private LocalDateTime modificationDate;
+    private LocalDateTime updateDate;
 
-    @Column()
-    private Boolean delete;
+    private Boolean isDeleted;
 }

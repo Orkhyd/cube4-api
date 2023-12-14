@@ -1,6 +1,6 @@
 package edu.cesi.cube4.controller;
 
-import edu.cesi.cube4.model.Maison;
+import edu.cesi.cube4.model.House;
 import edu.cesi.cube4.service.MaisonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,14 +20,14 @@ public class MaisonController {
     }
 
     @GetMapping
-    public List<Maison> getAllMaisons() {
+    public List<House> getAllMaisons() {
         return maisonService.findAllMaisons();
     }
 
     @PostMapping
-    public ResponseEntity<Maison> createMaison(@RequestBody Maison maison) {
-        Maison savedMaison = maisonService.saveMaison(maison);
-        return new ResponseEntity<>(savedMaison, HttpStatus.CREATED);
+    public ResponseEntity<House> createMaison(@RequestBody House house) {
+        House savedHouse = maisonService.saveMaison(house);
+        return new ResponseEntity<>(savedHouse, HttpStatus.CREATED);
     }
 
 }

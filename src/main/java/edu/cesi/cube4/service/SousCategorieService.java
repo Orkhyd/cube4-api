@@ -1,6 +1,6 @@
 package edu.cesi.cube4.service;
 
-import edu.cesi.cube4.model.SousCategorie;
+import edu.cesi.cube4.model.SubCategory;
 import edu.cesi.cube4.repository.SousCategorieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +16,12 @@ public class SousCategorieService {
         this.sousCategorieRepo = sousCategorieRepo;
     }
 
-    public List<SousCategorie> findAllSubCategories() {
+    public List<SubCategory> findAllSubCategories() {
         return sousCategorieRepo.findAll();
     }
 
-    public  SousCategorie saveSubCategorie(SousCategorie SousCategorie) {
-        return sousCategorieRepo.save(SousCategorie);
+    public SubCategory saveSubCategorie(SubCategory SubCategory) {
+        return sousCategorieRepo.save(SubCategory);
     }
 
 }

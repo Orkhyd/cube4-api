@@ -10,27 +10,32 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "categories")
-public class Categorie {
+public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(length = 100)
+    private String companyName;
+
     @NotBlank
-    @Column(length = 50)
+    @Column(length = 30)
     private String name;
 
+    @NotBlank
+    @Column(length = 100)
+    private String email;
+
+
+    @Column(length = 20)
+    private String phone;
+
     @CreationTimestamp
-    @Column()
     private LocalDateTime creationDate;
 
     @UpdateTimestamp
-    @Column()
-    private LocalDateTime modificationDate;
+    private LocalDateTime updateDate;
 
-    @Column()
-    private Boolean delete = false;
-
-
+    private Boolean isDeleted;
 }

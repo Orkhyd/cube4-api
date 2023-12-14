@@ -1,6 +1,6 @@
 package edu.cesi.cube4.controller;
 
-import edu.cesi.cube4.model.Article;
+import edu.cesi.cube4.model.Item;
 import edu.cesi.cube4.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,13 +20,13 @@ public class ArticleController {
     }
 
     @GetMapping
-    public List<Article> getAllArticles() {
+    public List<Item> getAllArticles() {
         return articleService.findAllArticles();
     }
 
     @PostMapping
-    public ResponseEntity<Article> createArticle(@RequestBody Article article) {
-        Article savedArticle = articleService.saveArticle(article);
-        return new ResponseEntity<>(savedArticle, HttpStatus.CREATED);
+    public ResponseEntity<Item> createArticle(@RequestBody Item item) {
+        Item savedItem = articleService.saveArticle(item);
+        return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
 }

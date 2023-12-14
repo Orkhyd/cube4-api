@@ -12,9 +12,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "items")
 @Data
-public class Article {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,11 +43,11 @@ public class Article {
 
     @UpdateTimestamp
     @Column()
-    private LocalDateTime modificationDate;
+    private LocalDateTime updateDate;
 
 
     @Column()
-    private Boolean delete = false;
+    private Boolean isDeleted = false;
 
     @Min(0)
     @Column()
@@ -68,21 +67,21 @@ public class Article {
     private Integer wineYear;
 
     @Column()
-    private Boolean tendance;
+    private Boolean trending;
 
     @ManyToOne
     @JoinColumn(name = "id_supplier", referencedColumnName = "id")
-    private Fournisseur supplier;
+    private Supplier supplier;
 
     @ManyToOne
-    @JoinColumn(name = "id_categorie", referencedColumnName = "id")
-    private Categorie categorie;
+    @JoinColumn(name = "id_category", referencedColumnName = "id")
+    private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "id_subcategorie", referencedColumnName = "id")
-    private SousCategorie subCategorie;
+    @JoinColumn(name = "id_subcategory", referencedColumnName = "id")
+    private SubCategory subCategory;
 
     @ManyToOne
     @JoinColumn(name = "id_house", referencedColumnName = "id")
-    private Maison house;
+    private House house;
 }

@@ -1,28 +1,31 @@
 package edu.cesi.cube4.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-public class Admin {
+@Entity
+public class CustomerOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank
-    @Column(length = 50)
-    private String username;
+    @ManyToOne
+    @JoinColumn(name = "id_customer", referencedColumnName = "id")
+    private Customer customer;
 
-    @NotBlank
-    @Column(length = 512)
-    private String password;
+    @ManyToOne
+    @JoinColumn(name = "id_status", referencedColumnName = "id")
+    private Status status;
+
+    @Column(precision = 10, scale = 2)
+    private BigDecimal totalPrice;
 
     @CreationTimestamp
     private LocalDateTime creationDate;
@@ -30,7 +33,4 @@ public class Admin {
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
-    private LocalDateTime deletionDate;
-
-    private Boolean isDeleted = false;
 }

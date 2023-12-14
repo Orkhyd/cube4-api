@@ -1,6 +1,6 @@
 package edu.cesi.cube4.controller;
 
-import edu.cesi.cube4.model.Categorie;
+import edu.cesi.cube4.model.Category;
 import edu.cesi.cube4.service.CategorieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,9 +25,9 @@ public class CategorieController {
     }
 
     @PostMapping
-    public ResponseEntity<Categorie> createCategorie(@RequestBody Categorie categorie) {
-        Categorie savedCategorie = categorieService.saveCategorie(categorie);
-        return new ResponseEntity<>(savedCategorie, HttpStatus.CREATED);
+    public ResponseEntity<Category> createCategorie(@RequestBody Category category) {
+        Category savedCategory = categorieService.saveCategorie(category);
+        return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
     }
 
 }

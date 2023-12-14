@@ -8,9 +8,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-public class Admin {
+@Entity
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,11 +18,7 @@ public class Admin {
 
     @NotBlank
     @Column(length = 50)
-    private String username;
-
-    @NotBlank
-    @Column(length = 512)
-    private String password;
+    private String name;
 
     @CreationTimestamp
     private LocalDateTime creationDate;
@@ -30,7 +26,7 @@ public class Admin {
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
-    private LocalDateTime deletionDate;
-
     private Boolean isDeleted = false;
+
+
 }

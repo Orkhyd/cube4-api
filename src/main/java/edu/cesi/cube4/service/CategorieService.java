@@ -1,6 +1,6 @@
 package edu.cesi.cube4.service;
 
-import edu.cesi.cube4.model.Categorie;
+import edu.cesi.cube4.model.Category;
 import edu.cesi.cube4.repository.CategorieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +16,12 @@ public class CategorieService {
         this.categorieRepo = categorieRepo;
     }
 
-    public List<Categorie> findAllCategories() {
+    public List<Category> findAllCategories() {
         return categorieRepo.findAll();
     }
 
-    public  Categorie saveCategorie(Categorie Categorie) {
-        return categorieRepo.save(Categorie);
+    public Category saveCategorie(Category category) {
+        return categorieRepo.save(category);
     }
 
 }

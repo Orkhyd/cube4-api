@@ -7,8 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "stocktracking")
-public class SuiviStock {
+public class StockTracking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,26 +15,21 @@ public class SuiviStock {
 
     @ManyToOne
     @JoinColumn(name = "id_item", referencedColumnName = "id")
-    private Article item;
+    private Item item;
 
-    @Column()
     private Integer quantityBeforeTransaction;
 
-    @Column()
-    private Integer quantityTransaction;
+    private Integer transactionQuantity;
 
-    @Column()
     private Integer quantityAfterTransaction;
 
     @ManyToOne
-    @JoinColumn(name = "id_type_transaction", referencedColumnName = "id")
-    private TypeTransaction idTypeTransaction;
+    @JoinColumn(name = "id_transaction_type", referencedColumnName = "id")
+    private TransactionType transactionType;
 
-    @Column()
-    private LocalDateTime dateTransaction;
+    private LocalDateTime transactionDate;
 
     @Lob
-    @Column()
     private String note;
 
 }
