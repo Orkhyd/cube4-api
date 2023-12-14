@@ -1,9 +1,9 @@
 package edu.cesi.cube4.repository;
 
-import edu.cesi.cube4.model.SupplierOrder;
+import edu.cesi.cube4.model.StockTracking;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CommandeFournisseurRepo extends JpaRepository<SupplierOrder,Integer> {
+public interface StockTrackingRepo extends JpaRepository<StockTracking,Integer> {
 }

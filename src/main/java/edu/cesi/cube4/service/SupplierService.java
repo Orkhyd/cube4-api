@@ -1,27 +1,27 @@
 package edu.cesi.cube4.service;
 
 import edu.cesi.cube4.model.Supplier;
-import edu.cesi.cube4.repository.FournisseurRepo;
+import edu.cesi.cube4.repository.SupplierRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class FournisseurService {
-    private final FournisseurRepo fournisseurRepo;
+public class SupplierService {
+    private final SupplierRepo supplierRepo;
 
     @Autowired
-    public FournisseurService(FournisseurRepo fournisseurRepo) {
-        this.fournisseurRepo = fournisseurRepo;
+    public SupplierService(SupplierRepo supplierRepo) {
+        this.supplierRepo = supplierRepo;
     }
 
     public List<Supplier> findAllSuppliers() {
-        return fournisseurRepo.findAll();
+        return supplierRepo.findAll();
     }
 
     public Supplier saveSupplier(Supplier supplier) {
-        return fournisseurRepo.save(supplier);
+        return supplierRepo.save(supplier);
     }
 
 }

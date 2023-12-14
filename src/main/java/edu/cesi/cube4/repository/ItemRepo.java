@@ -1,9 +1,9 @@
 package edu.cesi.cube4.repository;
 
-import edu.cesi.cube4.model.StockTracking;
+import edu.cesi.cube4.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SuiviStockRepo extends JpaRepository<StockTracking,Integer> {
+public interface ItemRepo extends JpaRepository<Item,Integer> {
 }
