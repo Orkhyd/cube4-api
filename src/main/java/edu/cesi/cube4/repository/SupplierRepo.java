@@ -1,9 +1,9 @@
 package edu.cesi.cube4.repository;
 
-import edu.cesi.cube4.model.GlobalInventory;
+import edu.cesi.cube4.model.Supplier;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface InventaireGlobalRepo extends JpaRepository<GlobalInventory,Integer> {
+public interface SupplierRepo extends JpaRepository<Supplier,Integer> {
 }

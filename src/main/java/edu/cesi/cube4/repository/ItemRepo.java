@@ -1,9 +1,9 @@
 package edu.cesi.cube4.repository;
 
-import edu.cesi.cube4.model.SubCategory;
+import edu.cesi.cube4.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SousCategorieRepo extends JpaRepository<SubCategory,Integer> {
+public interface ItemRepo extends JpaRepository<Item,Integer> {
 }

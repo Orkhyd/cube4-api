@@ -1,7 +1,7 @@
 package edu.cesi.cube4.controller;
 
 import edu.cesi.cube4.model.Item;
-import edu.cesi.cube4.service.ArticleService;
+import edu.cesi.cube4.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,22 +11,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/items")
-public class ArticleController {
-    private final ArticleService articleService;
+public class ItemController {
+    private final ItemService itemService;
 
     @Autowired
-    public ArticleController(ArticleService articleService) {
-        this.articleService = articleService;
+    public ItemController(ItemService itemService) {
+        this.itemService = itemService;
     }
 
     @GetMapping
-    public List<Item> getAllArticles() {
-        return articleService.findAllArticles();
+    public List<Item> getAllItems() {
+        return itemService.findAllItems();
     }
 
     @PostMapping
-    public ResponseEntity<Item> createArticle(@RequestBody Item item) {
-        Item savedItem = articleService.saveArticle(item);
+    public ResponseEntity<Item> createItem(@RequestBody Item item) {
+        Item savedItem = itemService.saveItem(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
 }
