@@ -38,7 +38,7 @@ public class AuthController {
         Authentication authentication =
                 authenticationManager
                         .authenticate(new UsernamePasswordAuthenticationToken(
-                                userLogin.getUsername(),
+                                userLogin.getUsername().toLowerCase(),
                                 userLogin.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -55,12 +55,12 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody AuthDTO.SignupRequest signUpRequest) {
-        if (adminRepo.findByUsername(signUpRequest.getUsername()).isPresent()) {
+        if (adminRepo.findByUsername(signUpRequest.getUsername().toLowerCase()).isPresent()) {
             return ResponseEntity.badRequest().body("Username is already taken!");
         }
 
         Admin newUser = new Admin();
-        newUser.setUsername(signUpRequest.getUsername());
+        newUser.setUsername(signUpRequest.getUsername().toLowerCase());
         newUser.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
 
         adminRepo.save(newUser);
