@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Item`
+-- Table structure for table `item`
 --
 
-DROP TABLE IF EXISTS `Item`;
+DROP TABLE IF EXISTS `item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Item` (
+CREATE TABLE `item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `description` text DEFAULT NULL,
@@ -46,37 +46,37 @@ CREATE TABLE `Item` (
   KEY `fk_item_category` (`id_category`),
   KEY `fk_item_subcategory` (`id_subcategory`),
   KEY `id_house` (`id_house`),
-  CONSTRAINT `item_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `Supplier` (`id`),
-  CONSTRAINT `item_ibfk_2` FOREIGN KEY (`id_house`) REFERENCES `House` (`id`),
-  CONSTRAINT `fk_item_category` FOREIGN KEY (`id_category`) REFERENCES `Category` (`id`),
-  CONSTRAINT `fk_item_subcategory` FOREIGN KEY (`id_subcategory`) REFERENCES `SubCategory` (`id`)
+  CONSTRAINT `item_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id`),
+  CONSTRAINT `item_ibfk_2` FOREIGN KEY (`id_house`) REFERENCES `house` (`id`),
+  CONSTRAINT `fk_item_category` FOREIGN KEY (`id_category`) REFERENCES `category` (`id`),
+  CONSTRAINT `fk_item_subcategory` FOREIGN KEY (`id_subcategory`) REFERENCES `subcategory` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Item`
+-- Dumping data for table `item`
 --
 
-LOCK TABLES `Item` WRITE;
-/*!40000 ALTER TABLE `Item` DISABLE KEYS */;
-INSERT INTO `Item` VALUES
+LOCK TABLES `item` WRITE;
+/*!40000 ALTER TABLE `item` DISABLE KEYS */;
+INSERT INTO `item` VALUES
 (24,'JP-Chenet','Vin blanc fruité d\'Alsace.',35.00,11.00,1,NULL,NULL,1,150,1,10,210.00,2021,2,4,3,0),
 (25,'Gascogne','Vin rouge de gascogne sec',29.00,8.00,1,NULL,NULL,1,67,1,20,174.00,2023,1,5,4,0),
 (26,'Saint Emillion','Vin Rosé de Bretagne léger',40.00,14.00,2,NULL,NULL,1,54,1,8,240.00,2019,3,2,1,0),
 (27,'Lumbrasco','Vin rouge d\'été aux fines herbes',67.00,19.00,1,NULL,NULL,1,51,1,10,670.00,2016,1,4,2,1),
 (28,'Lambrosco','Vsdqfsdfdsfs',50.00,10.00,1,NULL,NULL,0,56,1,10,500.00,2018,4,6,1,0),
 (29,'sqd','sdq',444.00,44.00,1,NULL,NULL,0,2343,0,44,444.00,44,3,NULL,1,0);
-/*!40000 ALTER TABLE `Item` ENABLE KEYS */;
+/*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `CustomerOrderItem`
+-- Table structure for table `customer_order_item`
 --
 
-DROP TABLE IF EXISTS `CustomerOrderItem`;
+DROP TABLE IF EXISTS `customer_order_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `CustomerOrderItem` (
+CREATE TABLE `customer_order_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_customer_order` int(11) DEFAULT NULL,
   `id_item` int(11) DEFAULT NULL,
@@ -87,28 +87,28 @@ CREATE TABLE `CustomerOrderItem` (
   PRIMARY KEY (`id`),
   KEY `id_customer_order` (`id_customer_order`),
   KEY `id_item` (`id_item`),
-  CONSTRAINT `customer_order_item_ibfk_1` FOREIGN KEY (`id_customer_order`) REFERENCES `CustomerOrder` (`id`),
-  CONSTRAINT `customer_order_item_ibfk_2` FOREIGN KEY (`id_item`) REFERENCES `Item` (`id`)
+  CONSTRAINT `customer_order_item_ibfk_1` FOREIGN KEY (`id_customer_order`) REFERENCES `customer_order` (`id`),
+  CONSTRAINT `customer_order_item_ibfk_2` FOREIGN KEY (`id_item`) REFERENCES `item` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `CustomerOrderItem`
+-- Dumping data for table `customer_order_item`
 --
 
-LOCK TABLES `CustomerOrderItem` WRITE;
-/*!40000 ALTER TABLE `CustomerOrderItem` DISABLE KEYS */;
-/*!40000 ALTER TABLE `CustomerOrderItem` ENABLE KEYS */;
+LOCK TABLES `customer_order_item` WRITE;
+/*!40000 ALTER TABLE `customer_order_item` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer_order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Category`
+-- Table structure for table `category`
 --
 
-DROP TABLE IF EXISTS `Category`;
+DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Category` (
+CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   `creation_date` datetime DEFAULT NULL,
@@ -119,28 +119,28 @@ CREATE TABLE `Category` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Category`
+-- Dumping data for table `category`
 --
 
-LOCK TABLES `Category` WRITE;
-/*!40000 ALTER TABLE `Category` DISABLE KEYS */;
-INSERT INTO `Category` VALUES
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES
 (1,'Rouge','2023-10-03 18:05:55','2023-10-03 18:05:55',0),
 (2,'Blanc','2023-10-03 18:05:55','2023-10-03 18:05:55',0),
 (3,'Rosé','2023-10-03 18:05:55','2023-10-03 18:05:55',0),
 (4,'Champagne','2023-10-03 18:05:55','2023-10-03 18:05:55',0),
 (7,'Pétillant',NULL,NULL,0);
-/*!40000 ALTER TABLE `Category` ENABLE KEYS */;
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `CustomerOrder`
+-- Table structure for table `customer_order`
 --
 
-DROP TABLE IF EXISTS `CustomerOrder`;
+DROP TABLE IF EXISTS `customer_order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `CustomerOrder` (
+CREATE TABLE `customer_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_customer` int(11) DEFAULT NULL,
   `id_status` int(11) DEFAULT NULL,
@@ -150,28 +150,28 @@ CREATE TABLE `CustomerOrder` (
   PRIMARY KEY (`id`),
   KEY `id_customer` (`id_customer`),
   KEY `id_status` (`id_status`),
-  CONSTRAINT `customer_order_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `Customer` (`id`),
-  CONSTRAINT `customer_order_ibfk_2` FOREIGN KEY (`id_status`) REFERENCES `Status` (`id`)
+  CONSTRAINT `customer_order_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`),
+  CONSTRAINT `customer_order_ibfk_2` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `CustomerOrder`
+-- Dumping data for table `customer_order`
 --
 
-LOCK TABLES `CustomerOrder` WRITE;
-/*!40000 ALTER TABLE `CustomerOrder` DISABLE KEYS */;
-/*!40000 ALTER TABLE `CustomerOrder` ENABLE KEYS */;
+LOCK TABLES `customer_order` WRITE;
+/*!40000 ALTER TABLE `customer_order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `SupplierOrder`
+-- Table structure for table `supplier_order`
 --
 
-DROP TABLE IF EXISTS `SupplierOrder`;
+DROP TABLE IF EXISTS `supplier_order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `SupplierOrder` (
+CREATE TABLE `supplier_order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_supplier` int(11) DEFAULT NULL,
   `id_item` int(11) DEFAULT NULL,
@@ -184,19 +184,19 @@ CREATE TABLE `SupplierOrder` (
   KEY `id_supplier` (`id_supplier`),
   KEY `id_item` (`id_item`),
   KEY `id_status` (`id_status`),
-  CONSTRAINT `supplier_order_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `Supplier` (`id`),
-  CONSTRAINT `supplier_order_ibfk_2` FOREIGN KEY (`id_item`) REFERENCES `Item` (`id`),
-  CONSTRAINT `supplier_order_ibfk_3` FOREIGN KEY (`id_status`) REFERENCES `Status` (`id`)
+  CONSTRAINT `supplier_order_ibfk_1` FOREIGN KEY (`id_supplier`) REFERENCES `supplier` (`id`),
+  CONSTRAINT `supplier_order_ibfk_2` FOREIGN KEY (`id_item`) REFERENCES `item` (`id`),
+  CONSTRAINT `supplier_order_ibfk_3` FOREIGN KEY (`id_status`) REFERENCES `status` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `SupplierOrder`
+-- Dumping data for table `supplier_order`
 --
 
-LOCK TABLES `SupplierOrder` WRITE;
-/*!40000 ALTER TABLE `SupplierOrder` DISABLE KEYS */;
-INSERT INTO `SupplierOrder` VALUES
+LOCK TABLES `supplier_order` WRITE;
+/*!40000 ALTER TABLE `supplier_order` DISABLE KEYS */;
+INSERT INTO `supplier_order` VALUES
 (78,1,24,30,330.00,3,'2023-10-16 15:39:02','2023-10-16 15:39:02'),
 (79,1,24,15,165.00,3,'2023-10-16 15:40:30','2023-10-16 15:40:30'),
 (80,1,24,30,330.00,3,'2023-10-17 10:19:11','2023-10-17 10:19:11'),
@@ -213,17 +213,17 @@ INSERT INTO `SupplierOrder` VALUES
 (91,1,24,40,440.00,3,'2023-11-13 14:46:29','2023-11-13 14:46:29'),
 (92,1,27,60,1140.00,3,'2023-11-16 14:54:13','2023-11-16 14:54:13'),
 (93,1,28,30,300.00,3,'2023-11-16 15:09:31','2023-11-16 15:09:31');
-/*!40000 ALTER TABLE `SupplierOrder` ENABLE KEYS */;
+/*!40000 ALTER TABLE `supplier_order` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Supplier`
+-- Table structure for table `supplier`
 --
 
-DROP TABLE IF EXISTS `Supplier`;
+DROP TABLE IF EXISTS `supplier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Supplier` (
+CREATE TABLE `supplier` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `company_name` varchar(100) DEFAULT NULL,
   `name` varchar(30) DEFAULT NULL,
@@ -237,12 +237,12 @@ CREATE TABLE `Supplier` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Supplier`
+-- Dumping data for table `supplier`
 --
 
-LOCK TABLES `Supplier` WRITE;
-/*!40000 ALTER TABLE `Supplier` DISABLE KEYS */;
-INSERT INTO `Supplier` VALUES
+LOCK TABLES `supplier` WRITE;
+/*!40000 ALTER TABLE `supplier` DISABLE KEYS */;
+INSERT INTO `supplier` VALUES
 (1,'VinDeFrance Ltd.','François','francois@vindefrance.com','+33 123456789','2023-10-03 18:06:02','2023-10-03 18:06:02',0),
 (2,'VinoItalia S.p.A.','Giovanni','giovanni@vinoitalia.it','+39 987654321','2023-10-03 18:06:02','2023-10-03 18:06:02',0),
 (3,'HandDeutsch SV','Hanse','hans@weindeutsch.de','+49 567891234','2023-10-03 18:06:02','2023-10-03 18:06:02',0),
@@ -251,17 +251,17 @@ INSERT INTO `Supplier` VALUES
 (6,'hfdsfd','hfdssfdfds','hfdsfds@gmail.com','6666',NULL,NULL,1),
 (7,'s','s','s','s',NULL,NULL,1),
 (8,'h','h','herterter','h',NULL,NULL,1);
-/*!40000 ALTER TABLE `Supplier` ENABLE KEYS */;
+/*!40000 ALTER TABLE `supplier` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `InventoryItem`
+-- Table structure for table `inventory_item`
 --
 
-DROP TABLE IF EXISTS `InventoryItem`;
+DROP TABLE IF EXISTS `inventory_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `InventoryItem` (
+CREATE TABLE `inventory_item` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_global_inventory` int(11) DEFAULT NULL,
   `id_item` int(11) DEFAULT NULL,
@@ -272,18 +272,18 @@ CREATE TABLE `InventoryItem` (
   PRIMARY KEY (`id`),
   KEY `id_global_inventory` (`id_global_inventory`),
   KEY `id_item` (`id_item`),
-  CONSTRAINT `inventory_item_ibfk_1` FOREIGN KEY (`id_global_inventory`) REFERENCES `GlobalInventory` (`id`),
-  CONSTRAINT `inventory_item_ibfk_2` FOREIGN KEY (`id_item`) REFERENCES `Item` (`id`)
+  CONSTRAINT `inventory_item_ibfk_1` FOREIGN KEY (`id_global_inventory`) REFERENCES `global_inventory` (`id`),
+  CONSTRAINT `inventory_item_ibfk_2` FOREIGN KEY (`id_item`) REFERENCES `item` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `InventoryItem`
+-- Dumping data for table `inventory_item`
 --
 
-LOCK TABLES `InventoryItem` WRITE;
-/*!40000 ALTER TABLE `InventoryItem` DISABLE KEYS */;
-INSERT INTO `InventoryItem` VALUES
+LOCK TABLES `inventory_item` WRITE;
+/*!40000 ALTER TABLE `inventory_item` DISABLE KEYS */;
+INSERT INTO `inventory_item` VALUES
 (1,6,24,150,150,'2023-11-16 14:27:09','2023-11-16 14:27:09'),
 (2,6,25,40,37,'2023-11-16 14:27:09','2023-11-16 14:27:09'),
 (3,7,24,150,149,'2023-11-16 14:27:41','2023-11-16 14:27:41'),
@@ -337,17 +337,17 @@ INSERT INTO `InventoryItem` VALUES
 (51,36,28,46,10,'2023-11-16 15:52:54','2023-11-16 15:52:54'),
 (52,37,29,78,2343,'2023-11-16 15:53:14','2023-11-16 15:53:14'),
 (53,38,28,10,56,'2023-11-16 15:55:37','2023-11-16 15:55:37');
-/*!40000 ALTER TABLE `InventoryItem` ENABLE KEYS */;
+/*!40000 ALTER TABLE `inventory_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `GlobalInventory`
+-- Table structure for table `global_inventory`
 --
 
-DROP TABLE IF EXISTS `GlobalInventory`;
+DROP TABLE IF EXISTS `global_inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `GlobalInventory` (
+CREATE TABLE `global_inventory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `total_saved_items` int(11) DEFAULT NULL,
   `total_real_items` int(11) DEFAULT NULL,
@@ -358,12 +358,12 @@ CREATE TABLE `GlobalInventory` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `GlobalInventory`
+-- Dumping data for table `global_inventory`
 --
 
-LOCK TABLES `GlobalInventory` WRITE;
-/*!40000 ALTER TABLE `GlobalInventory` DISABLE KEYS */;
-INSERT INTO `GlobalInventory` VALUES
+LOCK TABLES `global_inventory` WRITE;
+/*!40000 ALTER TABLE `global_inventory` DISABLE KEYS */;
+INSERT INTO `global_inventory` VALUES
 (1,245,NULL,'2023-11-16 14:06:55','2023-11-16 14:06:55'),
 (2,245,NULL,'2023-11-16 14:18:34','2023-11-16 14:18:34'),
 (3,245,NULL,'2023-11-16 14:20:58','2023-11-16 14:20:58'),
@@ -402,17 +402,17 @@ INSERT INTO `GlobalInventory` VALUES
 (36,46,10,'2023-11-16 15:52:54','2023-11-16 15:52:54'),
 (37,78,2343,'2023-11-16 15:53:14','2023-11-16 15:53:14'),
 (38,10,56,'2023-11-16 15:55:37','2023-11-16 15:55:37');
-/*!40000 ALTER TABLE `GlobalInventory` ENABLE KEYS */;
+/*!40000 ALTER TABLE `global_inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `ActionLog`
+-- Table structure for table `action_log`
 --
 
-DROP TABLE IF EXISTS `ActionLog`;
+DROP TABLE IF EXISTS `action_log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ActionLog` (
+CREATE TABLE `action_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_admin` int(11) DEFAULT NULL,
   `action_type` varchar(50) DEFAULT NULL,
@@ -421,27 +421,27 @@ CREATE TABLE `ActionLog` (
   `action_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_admin` (`id_admin`),
-  CONSTRAINT `action_log_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `Admin` (`id`)
+  CONSTRAINT `action_log_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ActionLog`
+-- Dumping data for table `action_log`
 --
 
-LOCK TABLES `ActionLog` WRITE;
-/*!40000 ALTER TABLE `ActionLog` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ActionLog` ENABLE KEYS */;
+LOCK TABLES `action_log` WRITE;
+/*!40000 ALTER TABLE `action_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `action_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `House`
+-- Table structure for table `house`
 --
 
-DROP TABLE IF EXISTS `House`;
+DROP TABLE IF EXISTS `house`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `House` (
+CREATE TABLE `house` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `creation_date` datetime DEFAULT current_timestamp(),
@@ -452,27 +452,27 @@ CREATE TABLE `House` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `House`
+-- Dumping data for table `house`
 --
 
-LOCK TABLES `House` WRITE;
-/*!40000 ALTER TABLE `House` DISABLE KEYS */;
-INSERT INTO `House` VALUES
+LOCK TABLES `house` WRITE;
+/*!40000 ALTER TABLE `house` DISABLE KEYS */;
+INSERT INTO `house` VALUES
 (1,'Maison Dupont','2023-10-10 18:02:10','2023-10-11 20:28:43',0),
 (2,'Château de la Vallée','2023-10-10 18:02:10','2023-10-10 18:02:10',0),
 (3,'Domaine des Vignes','2023-10-10 18:02:10','2023-10-10 18:02:10',0),
 (4,'Cave Saint-Pierre','2023-10-10 18:02:14','2023-10-10 18:02:14',0);
-/*!40000 ALTER TABLE `House` ENABLE KEYS */;
+/*!40000 ALTER TABLE `house` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `SubCategory`
+-- Table structure for table `subcategory`
 --
 
-DROP TABLE IF EXISTS `SubCategory`;
+DROP TABLE IF EXISTS `subcategory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `SubCategory` (
+CREATE TABLE `subcategory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `creation_date` datetime DEFAULT current_timestamp(),
@@ -483,12 +483,12 @@ CREATE TABLE `SubCategory` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `SubCategory`
+-- Dumping data for table `subcategory`
 --
 
-LOCK TABLES `SubCategory` WRITE;
-/*!40000 ALTER TABLE `SubCategory` DISABLE KEYS */;
-INSERT INTO `SubCategory` VALUES
+LOCK TABLES `subcategory` WRITE;
+/*!40000 ALTER TABLE `subcategory` DISABLE KEYS */;
+INSERT INTO `subcategory` VALUES
 (1,'Pétillant','2023-10-07 13:45:04','2023-10-07 13:45:04',0),
 (2,'Léger','2023-10-07 13:45:04','2023-10-07 13:45:04',0),
 (3,'Corsé','2023-10-07 13:45:04','2023-10-07 13:45:04',0),
@@ -497,17 +497,17 @@ INSERT INTO `SubCategory` VALUES
 (6,'Moelleux','2023-10-07 13:45:04','2023-11-15 09:21:14',0),
 (7,'Brut','2023-10-07 13:45:04','2023-10-07 13:45:04',0),
 (8,'Demi-sec','2023-10-07 13:45:04','2023-10-07 13:45:04',0);
-/*!40000 ALTER TABLE `SubCategory` ENABLE KEYS */;
+/*!40000 ALTER TABLE `subcategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Status`
+-- Table structure for table `status`
 --
 
-DROP TABLE IF EXISTS `Status`;
+DROP TABLE IF EXISTS `status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Status` (
+CREATE TABLE `status` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -515,27 +515,27 @@ CREATE TABLE `Status` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Status`
+-- Dumping data for table `status`
 --
 
-LOCK TABLES `Status` WRITE;
-/*!40000 ALTER TABLE `Status` DISABLE KEYS */;
-INSERT INTO `Status` VALUES
+LOCK TABLES `status` WRITE;
+/*!40000 ALTER TABLE `status` DISABLE KEYS */;
+INSERT INTO `status` VALUES
 (1,'En attente'),
 (2,'Confirmé'),
 (3,'Livré'),
 (4,'Annulé');
-/*!40000 ALTER TABLE `Status` ENABLE KEYS */;
+/*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `StockTracking`
+-- Table structure for table `stock_tracking`
 --
 
-DROP TABLE IF EXISTS `StockTracking`;
+DROP TABLE IF EXISTS `stock_tracking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `StockTracking` (
+CREATE TABLE `stock_tracking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_item` int(11) DEFAULT NULL,
   `quantity_before_transaction` int(11) DEFAULT NULL,
@@ -547,18 +547,18 @@ CREATE TABLE `StockTracking` (
   PRIMARY KEY (`id`),
   KEY `id_item` (`id_item`),
   KEY `id_transaction_type` (`id_transaction_type`),
-  CONSTRAINT `stock_tracking_ibfk_1` FOREIGN KEY (`id_item`) REFERENCES `Item` (`id`),
-  CONSTRAINT `stock_tracking_ibfk_2` FOREIGN KEY (`id_transaction_type`) REFERENCES `TransactionType` (`id`)
+  CONSTRAINT `stock_tracking_ibfk_1` FOREIGN KEY (`id_item`) REFERENCES `item` (`id`),
+  CONSTRAINT `stock_tracking_ibfk_2` FOREIGN KEY (`id_transaction_type`) REFERENCES `transaction_type` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `StockTracking`
+-- Dumping data for table `stock_tracking`
 --
 
-LOCK TABLES `StockTracking` WRITE;
-/*!40000 ALTER TABLE `StockTracking` DISABLE KEYS */;
-INSERT INTO `StockTracking` VALUES
+LOCK TABLES `stock_tracking` WRITE;
+/*!40000 ALTER TABLE `stock_tracking` DISABLE KEYS */;
+INSERT INTO `stock_tracking` VALUES
 (74,24,0,0,0,5,'2023-10-16 15:38:52',NULL),
 (75,24,0,30,30,1,'2023-10-16 15:39:02',NULL),
 (76,24,30,15,45,1,'2023-10-16 15:40:30',NULL),
@@ -603,17 +603,17 @@ INSERT INTO `StockTracking` VALUES
 (115,28,46,-36,10,4,'2023-11-16 15:52:54','Ajustement lors de l\'inventory'),
 (116,29,78,2265,2343,4,'2023-11-16 15:53:14','Ajustement lors de l\'inventory'),
 (117,28,10,46,56,4,'2023-11-16 15:55:37','Ajustement lors de l\'inventory');
-/*!40000 ALTER TABLE `StockTracking` ENABLE KEYS */;
+/*!40000 ALTER TABLE `stock_tracking` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `TransactionType`
+-- Table structure for table `transaction_type`
 --
 
-DROP TABLE IF EXISTS `TransactionType`;
+DROP TABLE IF EXISTS `transaction_type`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `TransactionType` (
+CREATE TABLE `transaction_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -621,28 +621,28 @@ CREATE TABLE `TransactionType` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `TransactionType`
+-- Dumping data for table `transaction_type`
 --
 
-LOCK TABLES `TransactionType` WRITE;
-/*!40000 ALTER TABLE `TransactionType` DISABLE KEYS */;
-INSERT INTO `TransactionType` VALUES
+LOCK TABLES `transaction_type` WRITE;
+/*!40000 ALTER TABLE `transaction_type` DISABLE KEYS */;
+INSERT INTO `transaction_type` VALUES
 (1,'Achat'),
 (2,'Vente'),
 (3,'Retour'),
 (4,'Ajustement'),
 (5,'Creation Article');
-/*!40000 ALTER TABLE `TransactionType` ENABLE KEYS */;
+/*!40000 ALTER TABLE `transaction_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Admin`
+-- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `Admin`;
+DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Admin` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(512) DEFAULT NULL,
@@ -655,24 +655,24 @@ CREATE TABLE `Admin` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Admin`
+-- Dumping data for table `admin`
 --
 
-LOCK TABLES `Admin` WRITE;
-/*!40000 ALTER TABLE `Admin` DISABLE KEYS */;
-INSERT INTO `Admin` VALUES
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES
 (1,'admin','admin','2023-10-03 18:07:16','2023-10-03 18:07:16',NULL,0);
-/*!40000 ALTER TABLE `Admin` ENABLE KEYS */;
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Customer`
+-- Table structure for table `customer`
 --
 
-DROP TABLE IF EXISTS `Customer`;
+DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Customer` (
+CREATE TABLE `customer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
@@ -686,15 +686,15 @@ CREATE TABLE `Customer` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Customer`
+-- Dumping data for table `customer`
 --
 
-LOCK TABLES `Customer` WRITE;
-/*!40000 ALTER TABLE `Customer` DISABLE KEYS */;
-INSERT INTO `Customer` VALUES
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES
 (1,'MartinDupont','martin.dupont@example.com','password123','2023-10-03 18:06:11','2023-10-03 18:06:11', 0),
 (2,'ClaireMoreau','claire.moreau@example.com','securePass456','2023-10-03 18:06:11','2023-10-03 18:06:11', 0);
-/*!40000 ALTER TABLE `Customer` ENABLE KEYS */;
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

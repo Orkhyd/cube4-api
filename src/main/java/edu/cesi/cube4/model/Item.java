@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -80,7 +79,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "id_subcategory", referencedColumnName = "id")
-    private SubCategory subCategory;
+    private Subcategory subcategory;
 
     @ManyToOne
     @JoinColumn(name = "id_house", referencedColumnName = "id")

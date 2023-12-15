@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-public class SubCategory {
+public class Subcategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

@@ -1,6 +1,6 @@
 package edu.cesi.cube4.controller;
 
-import edu.cesi.cube4.model.SubCategory;
+import edu.cesi.cube4.model.Subcategory;
 import edu.cesi.cube4.service.SubCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,14 +21,14 @@ public class SubCategoryController {
     }
 
     @GetMapping
-    public List<SubCategory> getAllSubCategories() {
+    public List<Subcategory> getAllSubCategories() {
         return subCategoryService.findAllSubCategories();
     }
 
     @PostMapping
-    public ResponseEntity<SubCategory> createSubCategory(@RequestBody SubCategory subCategory) {
-        SubCategory savedSubCategory = subCategoryService.saveSubCategory(subCategory);
-        return new ResponseEntity<>(savedSubCategory, HttpStatus.CREATED);
+    public ResponseEntity<Subcategory> createSubCategory(@RequestBody Subcategory subCategory) {
+        Subcategory savedSubcategory = subCategoryService.saveSubCategory(subCategory);
+        return new ResponseEntity<>(savedSubcategory, HttpStatus.CREATED);
     }
 
 }
