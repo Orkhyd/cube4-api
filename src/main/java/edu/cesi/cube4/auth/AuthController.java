@@ -48,17 +48,16 @@ public class AuthController {
             log.info("Token requested for user :{}", authentication.getAuthorities());
             String token = authService.generateToken(authentication);
 
-            AuthDTO.Response response = new AuthDTO.Response("User logged in successfully", token);
+            AuthDTO.Response response = new AuthDTO.Response(true,"User logged in successfully", token);
             return ResponseEntity.ok(response);
         } catch (BadCredentialsException e) {
             log.error("Login failed for user: {}", userLogin.getUsername(), e);
-
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body("Login failed: Incorrect username or password");
+            AuthDTO.Response response = new AuthDTO.Response(false, "Login failed: Incorrect username or password", null);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             log.error("Login error for user: {}", userLogin.getUsername(), e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Login error: Internal server error");
+            AuthDTO.Response response = new AuthDTO.Response(false, "Login error: Internal server error", null);
+            return ResponseEntity.ok(response);
         }
     }
 
