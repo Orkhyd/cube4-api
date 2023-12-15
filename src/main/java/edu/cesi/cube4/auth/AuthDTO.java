@@ -23,16 +23,19 @@ public class AuthDTO {
     // Nested static class for login response
     @Data
     public static class Response {
+        private Boolean connected;
         private String message;
         private String token;
 
-        public Response(String message, String token) {
+        public Response(Boolean connected, String message, String token) {
+            this.connected = connected;
             this.message = message;
             this.token = token;
         }
 
         // Getters and setters
     }
+
 
     // Additional DTOs for other authentication-related data
 }
