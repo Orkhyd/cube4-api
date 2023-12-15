@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/items")
@@ -20,8 +21,8 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<Item> getAllItems() {
-        return itemService.findAllItems();
+    public ResponseEntity<List<Item>> getAllItems() {
+        return new ResponseEntity<>(itemService.findAllItems(), HttpStatus.OK);
     }
 
     @PostMapping
@@ -29,4 +30,10 @@ public class ItemController {
         Item savedItem = itemService.saveItem(item);
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getItemById(@PathVariable Integer id) {
+        return itemService.findItemById(id);
+    }
+
 }
