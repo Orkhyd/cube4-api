@@ -1,3 +1,4 @@
+
 package edu.cesi.cube4.service;
 
 import org.springframework.context.annotation.Configuration;
@@ -16,4 +17,3 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowCredentials(true);
     }
 }
-
