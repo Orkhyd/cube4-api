@@ -7,11 +7,18 @@ public class AuthDTO {
     // Nested static class for login request
     @Data
     public static class LoginRequest {
-        private String nomUtilisateur;
-        private String motDePasse;
+        private String username;
+        private String password;
 
         // Constructors, getters, and setters
     }
+
+    @Data
+    public static class SignupRequest {
+        private String username;
+        private String password;
+    }
+
 
     // Nested static class for login response
     @Data

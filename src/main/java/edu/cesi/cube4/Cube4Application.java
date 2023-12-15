@@ -18,18 +18,18 @@ public class Cube4Application {
 		SpringApplication.run(Cube4Application.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner initializeUser(AdminRepo userRepository, BCryptPasswordEncoder passwordEncoder) {
-		return args -> {
-
-			Admin user = new Admin();
-			user.setUsername("exampleuser");
-			user.setPassword(passwordEncoder.encode("examplepassword"));
-
-			// Save the user to the database
-			userRepository.save(user);
-
-		};
-	}
+//	@Bean
+//	public CommandLineRunner initializeUser(AdminRepo userRepository, BCryptPasswordEncoder passwordEncoder) {
+//		return args -> {
+//
+//			Admin user = new Admin();
+//			user.setUsername("exampleuser");
+//			user.setPassword(passwordEncoder.encode("examplepassword"));
+//
+//			// Save the user to the database
+//			userRepository.save(user);
+//
+//		};
+//	}
 
 }

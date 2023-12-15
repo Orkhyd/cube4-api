@@ -15,11 +15,11 @@ public class JpaUserDetailsService implements UserDetailsService {
     private AdminRepo adminRepo;
 
     @Override
-    public UserDetails loadUserByUsername(String nomUtilisateur) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         AuthUser user = adminRepo
-                .findByUsername(nomUtilisateur)
+                .findByUsername(username)
                 .map(AuthUser::new)
-                .orElseThrow(() -> new UsernameNotFoundException("User name not found: " + nomUtilisateur));
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found: " + username));
 
         return user;
 
