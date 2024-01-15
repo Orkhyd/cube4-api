@@ -51,7 +51,7 @@ public class Item {
 
     @Min(0)
     @Column()
-    private Integer saveQuantity;
+    private Integer saveQuantity = 0;
 
     @Column()
     private Boolean autoOrder;
