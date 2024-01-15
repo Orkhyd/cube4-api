@@ -2,6 +2,7 @@ package edu.cesi.cube4.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +28,7 @@ public class StockTracking {
     @JoinColumn(name = "id_transaction_type", referencedColumnName = "id")
     private TransactionType transactionType;
 
+    @CreationTimestamp
     private LocalDateTime transactionDate;
 
     @Lob
