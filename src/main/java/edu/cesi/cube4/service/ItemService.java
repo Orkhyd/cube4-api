@@ -27,12 +27,7 @@ public class ItemService {
         return itemRepo.save(item);
     }
 
-    public ResponseEntity<?> findItemById(Integer id) {
-        Optional<Item> item = itemRepo.findById(id);
-        if (item.isEmpty()) {
-            return new ResponseEntity<>("No item was found for id: "+id, HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(item, HttpStatus.OK);
-        }
+    public Optional<Item> findItemById(Integer id) {
+        return itemRepo.findById(id);
     }
 }
