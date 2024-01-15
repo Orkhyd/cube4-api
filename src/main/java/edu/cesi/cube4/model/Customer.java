@@ -34,5 +34,6 @@ public class Customer {
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
+    @Column()
     private Boolean isDeleted = false;
 }

@@ -37,5 +37,6 @@ public class Supplier {
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
+    @Column()
     private Boolean isDeleted;
 }

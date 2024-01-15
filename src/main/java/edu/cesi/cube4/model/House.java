@@ -26,5 +26,6 @@ public class House {
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
+    @Column()
     private Boolean isDeleted;
 }

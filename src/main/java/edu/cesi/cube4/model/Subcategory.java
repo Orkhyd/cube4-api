@@ -25,5 +25,6 @@ public class Subcategory {
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
+    @Column()
     private Boolean isDeleted;
 }

@@ -26,6 +26,7 @@ public class Category {
     @UpdateTimestamp
     private LocalDateTime updateDate;
 
+    @Column()
     private Boolean isDeleted = false;
 
 
