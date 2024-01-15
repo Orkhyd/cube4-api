@@ -32,5 +32,6 @@ public class Admin {
 
     private LocalDateTime deletionDate;
 
+    @Column()
     private Boolean isDeleted = false;
 }
