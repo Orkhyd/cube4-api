@@ -27,5 +27,5 @@ public class House {
     private LocalDateTime updateDate;
 
     @Column()
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
 }

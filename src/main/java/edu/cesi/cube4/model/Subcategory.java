@@ -26,5 +26,5 @@ public class Subcategory {
     private LocalDateTime updateDate;
 
     @Column()
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
 }
