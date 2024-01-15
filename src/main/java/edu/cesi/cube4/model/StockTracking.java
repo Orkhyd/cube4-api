@@ -18,11 +18,11 @@ public class StockTracking {
     @JoinColumn(name = "id_item", referencedColumnName = "id")
     private Item item;
 
-    private Integer quantityBeforeTransaction;
+    private Integer quantityBeforeTransaction = 0;
 
-    private Integer transactionQuantity;
+    private Integer transactionQuantity = 0;
 
-    private Integer quantityAfterTransaction;
+    private Integer quantityAfterTransaction = 0;
 
     @ManyToOne
     @JoinColumn(name = "id_transaction_type", referencedColumnName = "id")
