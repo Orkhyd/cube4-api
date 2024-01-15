@@ -32,8 +32,26 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getItemById(@PathVariable Integer id) {
+    public Optional<Item> getItemById(@PathVariable Integer id) {
         return itemService.findItemById(id);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Item> updateItem(@PathVariable Integer id, @RequestBody Item itemDetails) {
+        // First, try to find the item by ID using the itemService
+        Optional<Item> optional = itemService.findItemById(id);
+
+        // Check if the item exists (response status is 200 OK and body is an instance of Item)
+        if (optional.isPresent()) {
+//            Item itemToUpdate = optional.get();
+            itemService.saveItem(itemDetails);
+            return new ResponseEntity<>(itemDetails, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+
+        }
+
+
+    }
 }
