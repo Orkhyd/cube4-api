@@ -5,10 +5,12 @@ import edu.cesi.cube4.model.House;
 import edu.cesi.cube4.repository.AdminRepo;
 import edu.cesi.cube4.repository.HouseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class AdminService {
 
     private final AdminRepo adminRepo;
