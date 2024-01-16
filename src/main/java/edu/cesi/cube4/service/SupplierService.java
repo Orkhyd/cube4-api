@@ -1,6 +1,7 @@
 package edu.cesi.cube4.service;
 
 import edu.cesi.cube4.model.Category;
+import edu.cesi.cube4.model.Item;
 import edu.cesi.cube4.model.Supplier;
 import edu.cesi.cube4.repository.SupplierRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class SupplierService {
 
     public List<Supplier> findAllSuppliers() {
         return supplierRepo.findAll();
+    }
+
+    public Supplier deleteSupplier(Supplier supplier) {
+        supplier.setIsDeleted(true);
+        return supplierRepo.save(supplier);
     }
 
     public Supplier saveSupplier(Supplier supplier) {

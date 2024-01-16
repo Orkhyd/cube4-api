@@ -27,6 +27,11 @@ public class ItemService {
         return itemRepo.save(item);
     }
 
+    public Item deleteItem(Item item) {
+        item.setIsDeleted(true);
+        return itemRepo.save(item);
+    }
+
     public Optional<Item> findItemById(Integer id) {
         return itemRepo.findById(id);
     }

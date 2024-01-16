@@ -1,6 +1,7 @@
 package edu.cesi.cube4.controller;
 
 import edu.cesi.cube4.model.Category;
+import edu.cesi.cube4.model.Item;
 import edu.cesi.cube4.model.Supplier;
 import edu.cesi.cube4.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,17 @@ public class SupplierController {
     public ResponseEntity<Supplier> createSupplier(@RequestBody Supplier supplier) {
         Supplier savedSupplier = supplierService.saveSupplier(supplier);
         return new ResponseEntity<>(savedSupplier, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Supplier> deleteSupplier(@PathVariable("id") Integer supplier) {
+        Optional<Supplier> optional = supplierService.findSupplierById(supplier);
+        if (optional.isPresent()) {
+            supplierService.deleteSupplier(optional.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }       
     }
 
     @PutMapping("/{id}")

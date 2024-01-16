@@ -70,8 +70,7 @@ public class InventoryItemController {
         stockTracking.setQuantityBeforeTransaction(savedQuantity);
         stockTracking.setQuantityAfterTransaction(realQuantity);
         stockTracking.setTransactionQuantity(delta);
-        stockTrackingService.adjustStockTracking(item);
-
+        stockTrackingService.adjustStockTracking(stockTracking);
 
         Map<String, Object> responseBody = new HashMap<>();
         responseBody.put("inventoryItem", savedInventoryItem);
