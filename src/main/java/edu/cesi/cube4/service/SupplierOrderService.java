@@ -4,6 +4,7 @@ import edu.cesi.cube4.model.SupplierOrder;
 import edu.cesi.cube4.repository.SupplierOrderRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +19,7 @@ public class SupplierOrderService {
         return supplierOrderRepo.findById(id);
     }
 
+    public List<SupplierOrder> findAllSupplierOrders(){return supplierOrderRepo.findAll();}
     public SupplierOrder saveSupplierOrder(SupplierOrder supplierOrder){
         return supplierOrderRepo.save(supplierOrder);
     }
