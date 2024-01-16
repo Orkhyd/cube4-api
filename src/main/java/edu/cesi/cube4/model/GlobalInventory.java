@@ -15,9 +15,11 @@ public class GlobalInventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer totalSavedItems;
+    @Column()
+    private Integer totalSavedItems = 0;
 
-    private Integer totalRealItems;
+    @Column()
+    private Integer totalRealItems = 0;
 
     @CreationTimestamp
     private LocalDateTime creationDate;

@@ -1,8 +1,7 @@
 package edu.cesi.cube4.service;
 
-import edu.cesi.cube4.model.GlobalInventory;
-import edu.cesi.cube4.repository.GlobalInventoryRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.cesi.cube4.model.InventoryItem;
+import edu.cesi.cube4.repository.InventoryItemRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,23 +10,18 @@ import java.util.Optional;
 @Service
 public class InventoryItemService {
 
-    private final GlobalInventoryRepo globalInventoryRepo;
+    private final InventoryItemRepo inventoryItemRepo;
 
-    @Autowired
-    public InventoryItemService(GlobalInventoryRepo globalInventoryRepo) {
-        this.globalInventoryRepo = globalInventoryRepo;
+    public InventoryItemService(InventoryItemRepo inventoryItemRepo) {
+        this.inventoryItemRepo = inventoryItemRepo;
     }
 
-    public GlobalInventory saveGlobalInventory(GlobalInventory globalInventory) {
-        return globalInventoryRepo.save(globalInventory);
+    public Optional<List<InventoryItem>> findAllInventoryItemsByGlobalId(Integer globalId) {
+        return inventoryItemRepo.findByGlobalInventoryId(globalId);
+
     }
 
-    public List<GlobalInventory> findAllGlobalInventories() {
-        return globalInventoryRepo.findAll();
+    public InventoryItem saveInventoryItem(InventoryItem inventoryItem) {
+        return inventoryItemRepo.save(inventoryItem);
     }
-
-    public Optional<GlobalInventory> findGlobalInventoryById(Integer id) {
-        return globalInventoryRepo.findById(id);
-    }
-
 }
