@@ -41,6 +41,18 @@ public class ItemController {
         return itemService.findItemById(id);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Item> deleteItem(@PathVariable Integer id) {
+        Optional<Item> optional = itemService.findItemById(id);
+        if (optional.isPresent()) {
+            itemService.deleteItem(optional.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }       
+    }
+
+
     @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable Integer id, @RequestBody Item itemDetails) {
         // First, try to find the item by ID using the itemService
