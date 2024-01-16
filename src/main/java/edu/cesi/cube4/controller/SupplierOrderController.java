@@ -10,10 +10,10 @@ import edu.cesi.cube4.service.StockTrackingService;
 import edu.cesi.cube4.service.SupplierOrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/supplierorder")
@@ -53,5 +53,13 @@ public class SupplierOrderController {
 
         return new ResponseEntity<>(savedSupplierOrder, HttpStatus.CREATED);
     }
+
+    @GetMapping("/{id}")
+    public Optional<SupplierOrder> getSupplierOrderById(@PathVariable Integer id) {
+        return supplierOrderService.findSupplierOrderById(id);
+    }
+
+    @GetMapping
+    public List<SupplierOrder> getAllSupplierOrders(){return supplierOrderService.findAllSupplierOrders();}
 
 }
