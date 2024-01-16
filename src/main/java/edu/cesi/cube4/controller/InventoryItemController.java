@@ -6,6 +6,7 @@ import edu.cesi.cube4.model.Item;
 import edu.cesi.cube4.service.GlobalInventoryService;
 import edu.cesi.cube4.service.InventoryItemService;
 import edu.cesi.cube4.service.ItemService;
+import edu.cesi.cube4.service.StockTrackingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +24,14 @@ public class InventoryItemController {
     private final InventoryItemService inventoryItemService;
     private final GlobalInventoryService globalInventoryService;
     private final ItemService itemService;
+    private final StockTrackingService stockTrackingService;
 
     @Autowired
-    InventoryItemController(InventoryItemService inventoryItemService, GlobalInventoryService globalInventoryService, ItemService itemService) {
+    InventoryItemController(InventoryItemService inventoryItemService, GlobalInventoryService globalInventoryService, ItemService itemService, StockTrackingService stockTrackingService) {
         this.inventoryItemService = inventoryItemService;
         this.globalInventoryService = globalInventoryService;
         this.itemService = itemService;
+        this.stockTrackingService = stockTrackingService;
     }
 
     @GetMapping("/{globalInventoryId}")
@@ -60,6 +63,7 @@ public class InventoryItemController {
         // Save real quantity as new saved quantity for item
         item.setSaveQuantity(realQuantity);
         itemService.saveItem(item);
+        stockTrackingService.adjustStockTracking(item);
 
         Integer delta = realQuantity - savedQuantity;
 
