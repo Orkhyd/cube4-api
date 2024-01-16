@@ -42,5 +42,14 @@ public class StockTrackingService {
         stockTrackingRepo.save(stockTracking);
     }
 
+    public void adjustStockTracking(Item item) {
+        StockTracking stockTracking = new StockTracking();
+        stockTracking.setItem(item);
+        TransactionType defaultTransactionType = transactionTypeRepo.findById(4)
+                .orElseThrow(() -> new RuntimeException("Default transaction type not found"));
+        stockTracking.setTransactionType(defaultTransactionType);
+        stockTrackingRepo.save(stockTracking);
+    }
+
 
 }
