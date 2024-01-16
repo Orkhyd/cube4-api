@@ -3,6 +3,7 @@ package edu.cesi.cube4.controller;
 import edu.cesi.cube4.model.GlobalInventory;
 import edu.cesi.cube4.model.InventoryItem;
 import edu.cesi.cube4.model.Item;
+import edu.cesi.cube4.model.StockTracking;
 import edu.cesi.cube4.service.GlobalInventoryService;
 import edu.cesi.cube4.service.InventoryItemService;
 import edu.cesi.cube4.service.ItemService;
@@ -50,6 +51,7 @@ public class InventoryItemController {
         Item item = savedInventoryItem.getItem();
         Integer savedQuantity = item.getSaveQuantity();
         Integer realQuantity = inventoryItem.getRealQuantity();
+        Integer delta = realQuantity - savedQuantity;
         GlobalInventory globalInventory = savedInventoryItem.getGlobalInventory();
 
         // Set savedItemCount
@@ -63,9 +65,13 @@ public class InventoryItemController {
         // Save real quantity as new saved quantity for item
         item.setSaveQuantity(realQuantity);
         itemService.saveItem(item);
+        StockTracking stockTracking = new StockTracking();
+        stockTracking.setItem(item);
+        stockTracking.setQuantityBeforeTransaction(savedQuantity);
+        stockTracking.setQuantityAfterTransaction(realQuantity);
+        stockTracking.setTransactionQuantity(delta);
         stockTrackingService.adjustStockTracking(item);
 
-        Integer delta = realQuantity - savedQuantity;
 
         Map<String, Object> responseBody = new HashMap<>();
         responseBody.put("inventoryItem", savedInventoryItem);
