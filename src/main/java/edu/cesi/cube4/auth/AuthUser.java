@@ -21,6 +21,9 @@ public class AuthUser extends Admin implements UserDetails {
     }
 
     @Override
+    public Integer getId() { return admin.getId();}
+
+    @Override
     public String getPassword() {
         return admin.getPassword();
     }
@@ -29,6 +32,7 @@ public class AuthUser extends Admin implements UserDetails {
     public String getUsername() {
         return admin.getUsername();
     }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -49,4 +53,6 @@ public class AuthUser extends Admin implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
