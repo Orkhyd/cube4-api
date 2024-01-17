@@ -22,6 +22,11 @@ public class SubCategoryService {
         return subCategoryRepo.findAll();
     }
 
+    public Subcategory deleteSubCategory(Subcategory SubCategory) {
+        SubCategory.setIsDeleted(true);
+        return subCategoryRepo.save(SubCategory);
+    }
+
     public Subcategory saveSubCategory(Subcategory SubCategory) {
         return subCategoryRepo.save(SubCategory);
     }

@@ -1,5 +1,6 @@
 package edu.cesi.cube4.service;
 
+import edu.cesi.cube4.model.GlobalInventory;
 import edu.cesi.cube4.model.InventoryItem;
 import edu.cesi.cube4.repository.InventoryItemRepo;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,9 @@ public class InventoryItemService {
 
     public Optional<List<InventoryItem>> findAllInventoryItemsByGlobalId(Integer globalId) {
         return inventoryItemRepo.findByGlobalInventoryId(globalId);
-
     }
+
+    public List<InventoryItem>  findAllInventoryItems(){return inventoryItemRepo.findAll();}
 
     public InventoryItem saveInventoryItem(InventoryItem inventoryItem) {
         return inventoryItemRepo.save(inventoryItem);

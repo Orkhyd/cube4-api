@@ -1,6 +1,7 @@
 package edu.cesi.cube4.service;
 
 import edu.cesi.cube4.model.Category;
+import edu.cesi.cube4.model.Supplier;
 import edu.cesi.cube4.repository.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,11 @@ public class CategoryService {
             return new ResponseEntity<>(categoryList, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    public Category deleteCategory(Category category) {
+        category.setIsDeleted(true);
+        return categoryRepo.save(category);
     }
 
     public Category saveCategory(Category category) {
