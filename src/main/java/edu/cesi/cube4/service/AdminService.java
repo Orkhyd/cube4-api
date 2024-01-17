@@ -25,7 +25,11 @@ public class AdminService {
     }
 
     public List<Admin> findAllAdmins() {
-        return adminRepo.findAll();
+
+        List<Admin> adminList = adminRepo.findAll();
+        adminList.forEach(admin -> admin.setPassword(null));
+        return adminList;
+
     }
 
     public Optional<Admin> findAdminById(Integer id) {
