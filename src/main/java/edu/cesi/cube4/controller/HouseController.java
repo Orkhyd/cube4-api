@@ -2,6 +2,7 @@ package edu.cesi.cube4.controller;
 
 import edu.cesi.cube4.model.Category;
 import edu.cesi.cube4.model.House;
+import edu.cesi.cube4.model.Subcategory;
 import edu.cesi.cube4.service.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,17 @@ public class HouseController {
     public ResponseEntity<House> createHouse(@RequestBody House house) {
         House savedHouse = houseService.saveHouse(house);
         return new ResponseEntity<>(savedHouse, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<House> deleteHouse(@PathVariable("id") Integer house) {
+        Optional<House> optional = houseService.findHouseById(house);
+        if (optional.isPresent()) {
+            houseService.deleteHouse(optional.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }       
     }
 
     @PutMapping("/{id}")

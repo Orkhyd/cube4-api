@@ -2,6 +2,7 @@ package edu.cesi.cube4.controller;
 
 import edu.cesi.cube4.model.Category;
 import edu.cesi.cube4.model.Subcategory;
+import edu.cesi.cube4.model.Supplier;
 import edu.cesi.cube4.service.SubCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,17 @@ public class SubCategoryController {
     public ResponseEntity<Subcategory> createSubCategory(@RequestBody Subcategory subCategory) {
         Subcategory savedSubcategory = subCategoryService.saveSubCategory(subCategory);
         return new ResponseEntity<>(savedSubcategory, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Subcategory> deleteSubCategory(@PathVariable("id") Integer subcategory) {
+        Optional<Subcategory> optional = subCategoryService.findSubCategoryById(subcategory);
+        if (optional.isPresent()) {
+            subCategoryService.deleteSubCategory(optional.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }       
     }
 
     @PutMapping("/{id}")
