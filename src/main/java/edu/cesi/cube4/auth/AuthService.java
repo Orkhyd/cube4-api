@@ -1,5 +1,6 @@
 package edu.cesi.cube4.auth;
 
+import edu.cesi.cube4.model.Admin;
 import edu.cesi.cube4.repository.AdminRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,8 @@ public class AuthService {
 
     public String generateToken(Authentication authentication) {
         Instant now = Instant.now();
+        AuthUser authUser = (AuthUser) authentication.getPrincipal();
+
 
         String scope = authentication.getAuthorities()
                 .stream()
@@ -40,7 +43,7 @@ public class AuthService {
                 .issuedAt(now)
                 .expiresAt(now.plus(10, ChronoUnit.HOURS))
                 .subject(authentication.getName())
-                .claim("scope", scope)
+                .claim("scope", scope).claim("adminId", authUser.getId())
                 .build();
 
         return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
