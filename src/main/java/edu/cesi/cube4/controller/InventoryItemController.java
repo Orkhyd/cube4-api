@@ -35,6 +35,11 @@ public class InventoryItemController {
         this.stockTrackingService = stockTrackingService;
     }
 
+    @GetMapping
+    public List<InventoryItem> getAllInventoryItems() {
+        return inventoryItemService.findAllInventoryItems();
+    }
+
     @GetMapping("/{globalInventoryId}")
     public ResponseEntity<List<InventoryItem>> getAllInventoryItemsByGlobalId(@PathVariable Integer globalInventoryId) {
 

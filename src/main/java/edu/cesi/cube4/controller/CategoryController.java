@@ -2,6 +2,7 @@ package edu.cesi.cube4.controller;
 
 import edu.cesi.cube4.model.Category;
 import edu.cesi.cube4.model.Item;
+import edu.cesi.cube4.model.Supplier;
 import edu.cesi.cube4.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,17 @@ public class CategoryController {
     public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         Category savedCategory = categoryService.saveCategory(category);
         return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Category> deleteCategory(@PathVariable("id") Integer category) {
+        Optional<Category> optional = categoryService.findCategoryById(category);
+        if (optional.isPresent()) {
+            categoryService.deleteCategory(optional.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }       
     }
 
     @PutMapping("/{id}")

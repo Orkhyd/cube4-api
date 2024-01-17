@@ -2,6 +2,7 @@ package edu.cesi.cube4.service;
 
 import edu.cesi.cube4.model.Category;
 import edu.cesi.cube4.model.House;
+import edu.cesi.cube4.model.Supplier;
 import edu.cesi.cube4.repository.HouseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,11 @@ public class HouseService {
     @Autowired
     public HouseService(HouseRepo houseRepo) {
         this.houseRepo = houseRepo;
+    }
+
+    public House deleteHouse(House house) {
+        house.setIsDeleted(true);
+        return houseRepo.save(house);
     }
 
     public List<House> findAllHouses() {

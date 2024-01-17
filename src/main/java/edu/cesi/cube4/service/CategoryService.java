@@ -1,6 +1,7 @@
 package edu.cesi.cube4.service;
 
 import edu.cesi.cube4.model.Category;
+import edu.cesi.cube4.model.Supplier;
 import edu.cesi.cube4.repository.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,11 @@ public class CategoryService {
 
     public List<Category> findAllCategories() {
         return categoryRepo.findAll();
+    }
+
+    public Category deleteCategory(Category category) {
+        category.setIsDeleted(true);
+        return categoryRepo.save(category);
     }
 
     public Category saveCategory(Category category) {
