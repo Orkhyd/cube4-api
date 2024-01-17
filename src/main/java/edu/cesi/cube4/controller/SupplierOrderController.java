@@ -33,7 +33,7 @@ public class SupplierOrderController {
 
     @PostMapping
     public ResponseEntity<SupplierOrder> createSupplierOrder(@RequestBody SupplierOrder supplierOrder) {
-        Status status = statusRepo.findById(1).orElseThrow(() -> new RuntimeException("Default status not found"));
+        Status status = statusRepo.findById(3).orElseThrow(() -> new RuntimeException("Default status not found"));
         supplierOrder.setStatus(status);
         SupplierOrder savedSupplierOrder = supplierOrderService.saveSupplierOrder(supplierOrder);
 
