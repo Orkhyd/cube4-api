@@ -1,5 +1,6 @@
 package edu.cesi.cube4.service;
 
+import edu.cesi.cube4.model.InventoryItem;
 import edu.cesi.cube4.model.Item;
 import edu.cesi.cube4.repository.ItemRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class ItemService {
         return itemRepo.findAll();
     }
 
+    public Optional<List<Item>> findAllItemsBySupplierId(Integer supplierId) {
+        return itemRepo.findBySupplierId(supplierId);
+
+    }
     public Item saveItem(Item item) {
         return itemRepo.save(item);
     }

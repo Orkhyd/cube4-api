@@ -1,5 +1,6 @@
 package edu.cesi.cube4.controller;
 
+import edu.cesi.cube4.model.InventoryItem;
 import edu.cesi.cube4.model.Item;
 import edu.cesi.cube4.service.ItemService;
 import edu.cesi.cube4.service.StockTrackingService;
@@ -36,6 +37,12 @@ public class ItemController {
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
 
+//    @GetMapping("/{supplierId}")
+//    public ResponseEntity<List<Item>> getAllItemsBySupplierId(@PathVariable Integer supplierId) {
+//
+//        Optional<List<Item>> optional =  itemService.findAllItemsBySupplierId(supplierId);
+//        return optional.map(items -> new ResponseEntity<>(items, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+//    }
     @GetMapping("/{id}")
     public Optional<Item> getItemById(@PathVariable Integer id) {
         return itemService.findItemById(id);

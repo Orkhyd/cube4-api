@@ -1,8 +1,8 @@
 package edu.cesi.cube4.controller;
 
-import edu.cesi.cube4.model.Category;
 import edu.cesi.cube4.model.Item;
 import edu.cesi.cube4.model.Supplier;
+import edu.cesi.cube4.service.ItemService;
 import edu.cesi.cube4.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +17,12 @@ import java.util.Optional;
 public class SupplierController {
 
     private final SupplierService supplierService;
+    private final ItemService itemService;
 
     @Autowired
-    SupplierController(SupplierService supplierService) {
+    SupplierController(SupplierService supplierService, ItemService itemService) {
         this.supplierService = supplierService;
+        this.itemService = itemService;
     }
 
     @GetMapping
@@ -39,6 +41,18 @@ public class SupplierController {
         Optional<Supplier> optional = supplierService.findSupplierById(supplier);
         if (optional.isPresent()) {
             supplierService.deleteSupplier(optional.get());
+
+            // Remove auto order for items with deleted supplier
+            Optional<List<Item>> optionalItems = itemService.findAllItemsBySupplierId(supplier);
+            if (optionalItems.isPresent()){
+                List<Item> itemList = optionalItems.get();
+                for (Item item :
+                        itemList) {
+                    item.setAutoOrder(false);
+                    itemService.saveItem(item);
+                }
+            }
+
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
