@@ -23,41 +23,41 @@ public class AdminService {
     public Admin saveAdmin(Admin admin) {
         return adminRepo.save(admin);
     }
+
     public ResponseEntity<List<Admin>> findAllAdmins() {
         List<Admin> adminList = adminRepo.findAll();
-        if (!adminList.isEmpty()){
+        if (!adminList.isEmpty()) {
             adminList.forEach(admin -> admin.setPassword(null));
             return new ResponseEntity<>(adminList, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
     public ResponseEntity<Admin> findAdminById(Integer id) {
         Optional<Admin> optionalAdmin = adminRepo.findById(id);
-        if (optionalAdmin.isPresent()){
+        if (optionalAdmin.isPresent()) {
             optionalAdmin.get().setPassword(null);
             return new ResponseEntity<>(optionalAdmin.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
     public ResponseEntity<Admin> findAdminByUsername(String username) {
         Optional<Admin> optionalAdmin = adminRepo.findByUsername(username);
         if (optionalAdmin.isPresent()) {
             optionalAdmin.get().setPassword(null);
             return new ResponseEntity<>(optionalAdmin.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-    public ResponseEntity<Admin> updateAdmin(Integer id, Admin modAdmin){
+
+    public ResponseEntity<Admin> updateAdmin(Integer id, Admin modAdmin) {
         Optional<Admin> optional = adminRepo.findById(id);
         if (optional.isPresent()) {
             Admin savedAdmin = saveAdmin(modAdmin);
             return new ResponseEntity<>(savedAdmin, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 }

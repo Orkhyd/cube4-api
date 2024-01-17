@@ -23,9 +23,8 @@ public class CategoryService {
         List<Category> categoryList = categoryRepo.findAll();
         if (!categoryList.isEmpty()){
             return new ResponseEntity<>(categoryList, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     public Category saveCategory(Category category) {
@@ -37,9 +36,8 @@ public class CategoryService {
         if (optional.isPresent()) {
             Category savedCategory = saveCategory(category);
             return new ResponseEntity<>(savedCategory, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     public Optional<Category> findCategoryById(Integer id) { return categoryRepo.findById(id);}
