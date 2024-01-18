@@ -630,7 +630,7 @@ INSERT INTO `transaction_type` VALUES
 (1,'Achat'),
 (2,'Vente'),
 (3,'Retour'),
-(4,'Ajustement'),
+(4,'Inventaire'),
 (5,'Creation Article');
 /*!40000 ALTER TABLE `transaction_type` ENABLE KEYS */;
 UNLOCK TABLES;

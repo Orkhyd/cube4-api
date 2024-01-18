@@ -22,31 +22,34 @@ public class CategoryService {
 
     public ResponseEntity<List<Category>> findAllCategories() {
         List<Category> categoryList = categoryRepo.findAll();
-        if (!categoryList.isEmpty()){
-            return new ResponseEntity<>(categoryList, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>(categoryList, HttpStatus.OK);
     }
 
-    public Category deleteCategory(Category category) {
-        category.setIsDeleted(true);
-        return categoryRepo.save(category);
+    public ResponseEntity<Category> deleteCategory(Integer categoryId) {
+        Optional<Category> optional = findCategoryById(categoryId);
+        if (optional.isPresent()) {
+            Category category = optional.get();
+            category.setIsDeleted(true);
+            categoryRepo.save(category);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     public Category saveCategory(Category category) {
         return categoryRepo.save(category);
     }
 
-    public ResponseEntity<Category> updateCategory(Integer id, Category category){
+    public ResponseEntity<Category> updateCategory(Integer id, Category category) {
         Optional<Category> optional = findCategoryById(id);
         if (optional.isPresent()) {
             Category savedCategory = saveCategory(category);
             return new ResponseEntity<>(savedCategory, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    public Optional<Category> findCategoryById(Integer id) { return categoryRepo.findById(id);}
+    public Optional<Category> findCategoryById(Integer id) {
+        return categoryRepo.findById(id);
+    }
 }
