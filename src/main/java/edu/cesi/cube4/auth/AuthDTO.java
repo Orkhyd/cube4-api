@@ -4,13 +4,11 @@ import lombok.Data;
 
 public class AuthDTO {
 
-    // Nested static class for login request
     @Data
     public static class LoginRequest {
         private String username;
         private String password;
 
-        // Constructors, getters, and setters
     }
 
     @Data
@@ -19,8 +17,6 @@ public class AuthDTO {
         private String password;
     }
 
-
-    // Nested static class for login response
     @Data
     public static class Response {
         private Boolean connected;
@@ -32,10 +28,5 @@ public class AuthDTO {
             this.message = message;
             this.token = token;
         }
-
-        // Getters and setters
     }
-
-
-    // Additional DTOs for other authentication-related data
 }

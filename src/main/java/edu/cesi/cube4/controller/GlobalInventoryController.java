@@ -24,31 +24,23 @@ public class GlobalInventoryController {
     }
 
     @GetMapping
-    public List<GlobalInventory> getAllGlobalInventories() {
+    public ResponseEntity<List<GlobalInventory>> getAllGlobalInventories() {
         return globalInventoryService.findAllGlobalInventories();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<GlobalInventory> getGlobalInventoryById(@PathVariable Integer id) {
-        Optional<GlobalInventory> optional = globalInventoryService.findGlobalInventoryById(id);
-        return optional.map(globalInventory -> new ResponseEntity<>(globalInventory, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return globalInventoryService.findGlobalInventoryById(id);
     }
 
     @PostMapping
     public ResponseEntity<GlobalInventory> createGlobalInventory() {
-        GlobalInventory globalInventory = globalInventoryService.saveGlobalInventory(new GlobalInventory());
-        return new ResponseEntity<>(globalInventory, HttpStatus.CREATED);
+        return globalInventoryService.createGlobalInventory();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<GlobalInventory> updateGlobalInventory(@PathVariable Integer id, @RequestBody GlobalInventory globalInventory) {
-        Optional<GlobalInventory> optional = globalInventoryService.findGlobalInventoryById(id);
-        if (optional.isPresent()) {
-            globalInventoryService.saveGlobalInventory(globalInventory);
-            return new ResponseEntity<>(globalInventory, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return globalInventoryService.updateGlobalInventory(id, globalInventory);
     }
 
 }

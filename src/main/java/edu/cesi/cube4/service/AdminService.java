@@ -28,9 +28,8 @@ public class AdminService {
         List<Admin> adminList = adminRepo.findAll();
         if (!adminList.isEmpty()) {
             adminList.forEach(admin -> admin.setPassword(null));
-            return new ResponseEntity<>(adminList, HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(adminList, HttpStatus.OK);
     }
 
     public ResponseEntity<Admin> findAdminById(Integer id) {

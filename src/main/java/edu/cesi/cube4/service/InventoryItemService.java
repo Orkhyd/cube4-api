@@ -24,6 +24,9 @@ public class InventoryItemService {
     public List<InventoryItem>  findAllInventoryItems(){return inventoryItemRepo.findAll();}
 
     public InventoryItem saveInventoryItem(InventoryItem inventoryItem) {
+        if (inventoryItem.getItem().getAutoOrder() && inventoryItem.getItem().getSaveQuantity() < inventoryItem.getItem().getMinOrderThreshold() ){
+            //TODO : create Supplier Order
+        }
         return inventoryItemRepo.save(inventoryItem);
     }
 }
